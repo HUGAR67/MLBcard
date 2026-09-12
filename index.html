@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Diamond Dynasty：棒球王朝</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="brand">⚾ DIAMOND DYNASTY</div><div class="sub">棒球卡牌 × 球隊經營 × 季後賽模擬</div><div class="wallet">🪙 <b id="coins">0</b>　💎 <b id="dust">0</b></div></header>
+<nav>
+<button data-tab="home">首頁</button><button data-tab="pack">抽卡</button><button data-tab="roster">我的陣容</button><button data-tab="season">例行賽</button><button data-tab="playoffs">季後賽</button><button data-tab="collection">圖鑑</button>
+</nav>
+<main>
+<section id="home" class="tab active"><div class="hero"><div><span class="eyebrow">BUILD YOUR DYNASTY</span><h1>打造你的夢幻球隊</h1><p>用你提供的打者與投手資料抽卡，組出 9 人打線與先發／牛棚，挑戰 162 場例行賽與季後賽。</p><button class="primary" onclick="showTab('pack')">開始抽卡 →</button></div><div class="hero-ball">⚾</div></div>
+<div class="grid3"><div class="panel"><h3>🃏 抽卡</h3><p>普通包 100 金幣，保證 5 張球員卡。</p></div><div class="panel"><h3>📋 陣容</h3><p>選出 9 位打者、5 位先發投手與 3 位牛棚。</p></div><div class="panel"><h3>🏆 王朝</h3><p>例行賽後依戰績晉級，勝者一路打到世界大賽。</p></div></div>
+<div class="panel"><h2>遊戲說明</h2><div class="rules"><span>每日登入：+500 金幣</span><span>每勝：+25 金幣</span><span>重複卡：自動轉化為碎片</span><span>稀有度依 WAR／能力值計算</span></div></div></section>
+
+<section id="pack" class="tab"><div class="section-head"><div><span class="eyebrow">CARD SHOP</span><h1>抽卡中心</h1><p>資料庫共收錄你的 batter.json 與 pitcher.json 球員。</p></div></div><div class="packbox"><div class="pack-art">⚾<small>BASEBALL<br>PACK</small></div><div><h2>全明星球員包</h2><p>一次開啟 5 張卡。高 WAR 球員出現率更低。</p><div class="price">🪙 100</div><button class="primary" id="openPack">開 1 包</button></div></div><div id="packResult" class="cards"></div></section>
+
+<section id="roster" class="tab"><div class="section-head"><div><span class="eyebrow">MY TEAM</span><h1>我的陣容</h1></div><button class="ghost" onclick="autoLineup()">自動最佳陣容</button></div><div class="team-rating"><div>球隊總評 <b id="teamRating">--</b></div><div>打線 <b id="offRating">--</b></div><div>投手 <b id="pitRating">--</b></div></div><div class="lineup" id="lineup"></div><div class="roster-hint">點擊下方卡片加入／移除。最多 9 位打者、5 位先發投手、3 位牛棚。</div><div id="ownedGrid" class="cards"></div></section>
+
+<section id="season" class="tab"><div class="section-head"><div><span class="eyebrow">REGULAR SEASON</span><h1>例行賽</h1><p>你的球隊會與 MLB 30 隊進行 162 場模擬；實際戰力來自你目前的陣容。</p></div><button class="primary" id="simSeason">模擬完整賽季</button></div><div id="seasonSummary" class="panel"></div><div id="standings" class="panel"></div></section>
+
+<section id="playoffs" class="tab"><div class="section-head"><div><span class="eyebrow">OCTOBER</span><h1>季後賽</h1><p>先完成例行賽。晉級後可一場一場看你的球隊能不能拿下冠軍。</p></div><button class="primary" id="simPlayoffs">模擬季後賽</button></div><div id="bracket" class="bracket"></div><div id="playoffLog" class="panel"></div></section>
+
+<section id="collection" class="tab"><div class="section-head"><div><span class="eyebrow">COLLECTION</span><h1>球員圖鑑</h1><p>所有球員來自附件資料，不需要額外 API。</p></div><input id="search" placeholder="搜尋球員 / 球隊…"></div><div class="filters"><button class="filter active" data-filter="all">全部</button><button class="filter" data-filter="batter">打者</button><button class="filter" data-filter="pitcher">投手</button><button class="filter" data-filter="owned">已擁有</button></div><div id="collectionGrid" class="cards"></div></section>
+</main>
+<div id="toast"></div>
+<script src="app.js"></script>
+</body></html>
